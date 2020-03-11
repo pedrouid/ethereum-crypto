@@ -1,7 +1,7 @@
 {
   "name": "ethereum-crypto",
   "description": "Performant ethereum crypto library",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Pedro Gomes <github.com/pedrouid>",
   "license": "MIT",
   "keywords": [
@@ -42,7 +42,7 @@
     "prepare": "yarn lint && yarn build && yarn test"
   },
   "dependencies": {
-    "eccrypto-js": "4.3.2"
+    "eccrypto-js": "5.0.0-beta.1"
   },
   "devDependencies": {
     "@types/jest": "25.1.1",
