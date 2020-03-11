@@ -32,6 +32,11 @@ export function hashMessage(message: Buffer | string): Buffer {
   );
 }
 
+export function calcV(chainId = 0): Buffer {
+  const v = chainId ? chainId * 2 + 35 : 27;
+  return hexToBuffer(v.toString(16));
+}
+
 export function splitSignature(sig: Buffer): EthSignature {
   return {
     r: sig.slice(0, 32).toString('hex'),
@@ -52,19 +57,21 @@ export async function signDigest(
   privateKey: Buffer,
   digest: Buffer
 ): Promise<Buffer> {
-  const sig = await sign(privateKey, digest);
+  const sig = await sign(privateKey, digest, true);
   return sig;
 }
 
 export async function signMessage(
   privateKey: Buffer | string,
-  message: Buffer | string
+  message: Buffer | string,
+  chainId?: number
 ): Promise<string> {
   privateKey = Buffer.isBuffer(privateKey)
     ? privateKey
     : hexToBuffer(privateKey);
   const hash = hashMessage(message);
-  const sig = await signDigest(privateKey, hash);
+  let sig = await signDigest(privateKey, hash);
+  sig = concatBuffers(sig, calcV(chainId));
   return addHexPrefix(bufferToHex(sig));
 }
 
