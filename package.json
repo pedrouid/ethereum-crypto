@@ -20,7 +20,6 @@
   ],
   "main": "dist/cjs/index.js",
   "types": "dist/cjs/index.d.ts",
-  "module": "dist/es6/index.js",
   "unpkg": "dist/umd/index.min.js",
   "homepage": "https://github.com/pedrouid/ethereum-crypto",
   "repository": {
@@ -37,11 +36,11 @@
     "build:umd": "webpack",
     "build": "yarn clean && yarn build:cjs && yarn build:umd",
     "test": "tsdx test ./test",
-    "lint": "tsdx lint ./src ./test",
+    "lint": "tsdx lint src test",
     "prepare": "yarn lint && yarn build && yarn test"
   },
   "dependencies": {
-    "eccrypto-js": "5.0.0-beta.1"
+    "eccrypto-js": "5.0.0-beta.2"
   },
   "devDependencies": {
     "@types/jest": "25.1.1",
