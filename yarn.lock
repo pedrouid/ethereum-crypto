@@ -2655,10 +2655,10 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-eccrypto-js@5.0.0-beta.2:
-  version "5.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/eccrypto-js/-/eccrypto-js-5.0.0-beta.2.tgz#8ec648243b7837a291d495cc48dc7d40604a1c03"
-  integrity sha512-gmh8sUIpLYsgnaVS/Epy2YxXoshsbYGO+7ooH2X+tmaZVFL6tl0D7vGOwp37i3NYUykw03YvcNG09/HeoSkoWg==
+eccrypto-js@5.0.0-beta.3:
+  version "5.0.0-beta.3"
+  resolved "https://registry.yarnpkg.com/eccrypto-js/-/eccrypto-js-5.0.0-beta.3.tgz#b5a5874e0de3828bf6e6caf1ce2f283c326b7f7b"
+  integrity sha512-ZZmcUV5V89kJM8kvEhEmgA32unYeo0DDERccaTQ09EsgzTAOus8U3S+2amHa462VafQYmlGGWNOH9j55Gs6cgg==
   dependencies:
     aes-js "3.1.2"
     bs58check "2.1.2"
