@@ -40,7 +40,8 @@
     "prepare": "yarn lint && yarn build && yarn test"
   },
   "dependencies": {
-    "eccrypto-js": "5.0.0-beta.4"
+    "eccrypto-js": "5.0.0-beta.5",
+    "hdnode-js": "1.0.0"
   },
   "devDependencies": {
     "@types/jest": "25.1.1",

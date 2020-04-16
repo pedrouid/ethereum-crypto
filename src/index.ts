@@ -1,3 +1,4 @@
+// import { HDNode } from 'hdnode-js';
 import {
   sign,
   encrypt,
@@ -170,11 +171,44 @@ export async function decryptWithPrivateKey(
   return bufferToUtf8(decrypted);
 }
 
-export class EthereumSigner {
-  public static async createRandom() {
+// export class HDWallet {
+//   public static createRandom(): HDWallet {
+//     const hdNode = HDNode.createRandom();
+//     return new HDWallet(hdNode);
+//   }
+
+//   public static fromMasterSeed(seedPhrase: string): HDWallet {
+//     const hdNode = HDNode.fromMasterSeed(seedPhrase);
+//     return new HDWallet(hdNode);
+//   }
+
+//   public static fromExtendedKey(base58Key: string): HDWallet {
+//     const hdNode = HDNode.fromExtendedKey(base58Key);
+//     return new HDWallet(hdNode);
+//   }
+//   constructor(private readonly hdNode: HDNode) {}
+
+//   public getWallet(index: number = 0): EthereumWallet {
+//     const { privateKey } = this.hdNode.deriveChild(index);
+//     return new EthereumWallet(privateKey);
+//   }
+// }
+
+export class EthereumWallet {
+  public static createRandom(): EthereumWallet {
     const privateKey = bufferToHex(randomBytes(32), true);
-    return new EthereumSigner(privateKey);
+    return new EthereumWallet(privateKey);
   }
+
+  // public static fromMasterSeed(seedPhrase: string): EthereumWallet {
+  //   const hdWallet = HDWallet.fromMasterSeed(seedPhrase);
+  //   return hdWallet.getWallet();
+  // }
+
+  // public static fromExtendedKey(base58Key: string): EthereumWallet {
+  //   const hdWallet = HDWallet.fromExtendedKey(base58Key);
+  //   return hdWallet.getWallet();
+  // }
 
   public address: string;
   public publicKey: string;

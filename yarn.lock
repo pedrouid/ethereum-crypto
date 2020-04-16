@@ -2684,13 +2684,13 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-eccrypto-js@5.0.0-beta.4:
-  version "5.0.0-beta.4"
-  resolved "https://registry.yarnpkg.com/eccrypto-js/-/eccrypto-js-5.0.0-beta.4.tgz#15bc7f938241a31ca8197c887f357ba90cccfef4"
-  integrity sha512-Z3Kj/s0RFp2GR2CBGfA3I5jNhRkcbEdpbU+OWUFak4/HLecpYD6gI3mijvr4Hfl1fj78cfb5Mpgmv34Xwg9P3w==
+eccrypto-js@5.0.0-beta.5:
+  version "5.0.0-beta.5"
+  resolved "https://registry.yarnpkg.com/eccrypto-js/-/eccrypto-js-5.0.0-beta.5.tgz#db35bc4f51c68ee4dd314001109ab6511de85bde"
+  integrity sha512-inPlZ1p7DoDytwF+qHJoEBVNcafdo1Wy9pSLBd1q4IMev0plHOi+qNdAKc82BbHKr28d3c4ezzvqYL9PRMh/Og==
   dependencies:
     aes-js "3.1.2"
-    bs58check "2.1.2"
+    enc-utils "1.3.0"
     hash.js "1.1.7"
     js-sha3 "0.8.0"
     randombytes "2.1.0"
@@ -2753,6 +2753,11 @@ emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
   integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
+
+enc-utils@1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/enc-utils/-/enc-utils-1.3.0.tgz#799d5939ce4ea49b9d21f68d235a99cbf814459c"
+  integrity sha512-MOGLltwPsr5dHYDUfECDhfOfw9+QPu0O2yfLhSx/RcYeZDbL1X8es3K7vFQUQ9M59lQC8EklR37etMxggm3HJA==
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.4"
@@ -3750,6 +3755,14 @@ hash.js@1.1.7, hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
+
+hdnode-js@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/hdnode-js/-/hdnode-js-1.0.0.tgz#ee0c4b9a7ccda83d4a778e4d48a458a3834274b6"
+  integrity sha512-FzTtjGajE2H4fOs1Gx8Syxj5X9uQb/OYP7e6gYpdtgt+sY5uP9VeC1KvywE+yQZIwM3yiaYlanqGXGH5bhyJjA==
+  dependencies:
+    bs58check "2.1.2"
+    eccrypto-js "5.0.0-beta.5"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
