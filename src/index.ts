@@ -1,4 +1,4 @@
-// import { HDNode } from 'hdnode-js';
+import { HDNode } from 'hdnode-js';
 import {
   sign,
   encrypt,
@@ -22,14 +22,13 @@ import {
   decompress,
 } from 'eccrypto-js';
 
-export * from 'eccrypto-js';
-
 export interface EthSignature {
   r: string;
   s: string;
   v: string;
 }
 
+export const ETH_STANDARD_PATH = "m/44'/60'/0'/0";
 export const ETH_SIGN_PREFIX = '\x19Ethereum Signed Message:\n';
 
 export function bufferify(input: any[] | Buffer | string | Uint8Array): Buffer {
@@ -171,44 +170,25 @@ export async function decryptWithPrivateKey(
   return bufferToUtf8(decrypted);
 }
 
-// export class HDWallet {
-//   public static createRandom(): HDWallet {
-//     const hdNode = HDNode.createRandom();
-//     return new HDWallet(hdNode);
-//   }
-
-//   public static fromMasterSeed(seedPhrase: string): HDWallet {
-//     const hdNode = HDNode.fromMasterSeed(seedPhrase);
-//     return new HDWallet(hdNode);
-//   }
-
-//   public static fromExtendedKey(base58Key: string): HDWallet {
-//     const hdNode = HDNode.fromExtendedKey(base58Key);
-//     return new HDWallet(hdNode);
-//   }
-//   constructor(private readonly hdNode: HDNode) {}
-
-//   public getWallet(index: number = 0): EthereumWallet {
-//     const { privateKey } = this.hdNode.deriveChild(index);
-//     return new EthereumWallet(privateKey);
-//   }
-// }
-
 export class EthereumWallet {
   public static createRandom(): EthereumWallet {
-    const privateKey = bufferToHex(randomBytes(32), true);
+    const privateKey = bufferToHex(randomBytes(32));
     return new EthereumWallet(privateKey);
   }
 
-  // public static fromMasterSeed(seedPhrase: string): EthereumWallet {
-  //   const hdWallet = HDWallet.fromMasterSeed(seedPhrase);
-  //   return hdWallet.getWallet();
-  // }
+  public static fromMasterSeed(seedPhrase: string): EthereumWallet {
+    const privateKey = HDNode.fromMasterSeed(seedPhrase)
+      .derivePath(ETH_STANDARD_PATH)
+      .deriveChild(0).privateKey;
+    return new EthereumWallet(privateKey);
+  }
 
-  // public static fromExtendedKey(base58Key: string): EthereumWallet {
-  //   const hdWallet = HDWallet.fromExtendedKey(base58Key);
-  //   return hdWallet.getWallet();
-  // }
+  public static fromExtendedKey(base58Key: string): EthereumWallet {
+    const privateKey = HDNode.fromExtendedKey(base58Key)
+      .derivePath(ETH_STANDARD_PATH)
+      .deriveChild(0).privateKey;
+    return new EthereumWallet(privateKey);
+  }
 
   public address: string;
   public publicKey: string;
@@ -229,5 +209,9 @@ export class EthereumWallet {
 
   public async signMessage(message: string): Promise<string> {
     return signEthereumMessage(this.privateKey, message);
+  }
+
+  public async signDigest(digest: string): Promise<string> {
+    return signDigest(this.privateKey, digest);
   }
 }
